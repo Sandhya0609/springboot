@@ -11,13 +11,12 @@ import java.util.List;
 @RestController
 //@RequestMapping("/book")
 public class BookController {
-
     @Autowired
-   private BookService bookService;
+    private BookService bookService;
 
 
-@GetMapping("/allBooks")
+    @GetMapping("/allBooks")
     public List<Book> getAllBooks(){
-         return bookService.getAllBooks();
+        return bookService.getAllBooks();
     }
 }
