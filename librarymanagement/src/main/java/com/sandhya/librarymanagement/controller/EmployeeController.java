@@ -22,10 +22,12 @@ public class EmployeeController {
     }
     @GetMapping("/emp/{empId}")
     public Optional<Employee> getEmp(@PathVariable Integer empId) {
+
         return employeeService.getEmp(empId);
     }
     @PostMapping("/addNewEmp")
     public Employee addNewEmployee(@RequestBody Employee employee){
+
         return employeeService.addNewEmployee(employee);
     }
     @DeleteMapping("/delete/{empId}")
