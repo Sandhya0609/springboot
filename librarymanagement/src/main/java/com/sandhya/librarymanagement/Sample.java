@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class Sample {
 
-//@Value("${spring.info}")
+@Value("${spring.info}")
     private String message=" Welcome Java";
 
 @GetMapping("/hello")
