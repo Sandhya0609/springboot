@@ -17,6 +17,7 @@ public class UserController {
 
     @PostMapping("/register")
     public String registerAndSendAnEmail(@RequestBody User user){
+
         return  userService.registerUser(user);
     }
 }

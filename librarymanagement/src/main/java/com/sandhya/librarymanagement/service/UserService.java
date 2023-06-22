@@ -16,17 +16,21 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
     private SendRegistrationSuccessMail sendRegistrationSuccessMail;
 
     private PasswordEncoder passwordEncoder;
 
     public String registerUser(User user) {
 
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        this.userRepository.save(user);
+       user.setPassword(passwordEncoder.encode(user.getPassword()));
+       this.userRepository.save(user);
+        System.out.println("After user Save.......");
+
 
         String info="You have successfully registered in to library management website";
         try {
+            System.out.println("Before Email sending......."+user.getEmail());
             sendRegistrationSuccessMail.sendAnEmail(user.getEmail(),info);
         } catch (MessagingException e) {
             e.printStackTrace();

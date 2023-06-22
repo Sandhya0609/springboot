@@ -2,9 +2,9 @@ package com.sandhya.librarymanagement.util;
 
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.thymeleaf.spring6.SpringTemplateEngine;
@@ -14,15 +14,17 @@ import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 
+
 public class SendRegistrationSuccessMail {
 
     @Autowired
-    private JavaMailSender javaMailSender;
+     private JavaMailSender javaMailSender;
 
     @Autowired
-    private SpringTemplateEngine springTemplateEngine;
+    private final SpringTemplateEngine springTemplateEngine;
 
-    public SendRegistrationSuccessMail() {
+    public SendRegistrationSuccessMail(SpringTemplateEngine springTemplateEngine) {
+        this.springTemplateEngine = springTemplateEngine;
     }
 
     public String sendAnEmail(String email, String Message) throws MessagingException {
